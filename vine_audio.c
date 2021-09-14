@@ -7,8 +7,16 @@
 #include "vine_audio.h"
 #include "./agc/VineAGC.h"
 
-static int g_agcBst = 1; // agc boost parameter
-static int g_agcLmt = 1; // agc limit parameter
+// common default constatns
+#define FRAMESIZE_NB 160
+#define FRAMESIZE_WB 320
+#define AGC_PARAM_MIN_VAL 1
+#define AGC_PARAM_MAX_VAL 32767
+
+
+static int g_agcBst = PARAM_MIN_VAL; // agc boost parameter
+static int g_agcLmt = PARAM_MIN_VAL; // agc limit parameter
+
 
 /*===========================================================================
 DESCRIPTION
