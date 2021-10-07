@@ -21,7 +21,7 @@ static int g_agcLmt = PARAM_MIN_VAL; // agc limit parameter
 /*===========================================================================
 DESCRIPTION
 	Result can be found as below.
-
+	
 	fail: "0" Out of supporting setting values.
 	success: "1" When supporting values are set.
 ===========================================================================*/
