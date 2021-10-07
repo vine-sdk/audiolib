@@ -30,14 +30,14 @@ int VineInitAGC ()
 	vagc_ProcessResult agcResult;
 	int ret_val = 0;
  
-    agcResult = vagcInitialize(g_agcBst, g_agcLmt);
+	agcResult = vagcInitialize(g_agcBst, g_agcLmt);
 
-    if (agcResult == vagc_Success) {
-        ret_val = 1;
-    }
-    else {
-        ret_val = 0;
-    }
+	if (agcResult == vagc_Success) {
+		ret_val = 1;
+	}
+	else {
+		ret_val = 0;
+	}
 	
 	return ret_val;
 }
@@ -47,9 +47,9 @@ int VineInitAGC ()
 DESCRIPTION
 	Processing Function
 
-    Return values
-    fail: 0
-    success: 1
+	Return values
+	fail: 0
+	success: 1
 ===========================================================================*/
 int VineProcessAGC (short* pcmInput, short* pcmOutput)
 {
@@ -61,11 +61,11 @@ int VineProcessAGC (short* pcmInput, short* pcmOutput)
 		agcResult = vagcProcess(pcmInput, pcmOutput, g_agcBst, g_agcBst);
 
 		if (agcResult == vagc_Success) {
-            retval = 1;
-        }
+			retval = 1;
+		}
 		else {
-            retval = 0;
-        }
+			retval = 0;
+		}
 	}
 	else {
 		for(i=0;i<FRAMESIZE_NB;i++) { pcmOutput[i] = pcmInput[i]; }
