@@ -1,6 +1,11 @@
 # audiolib
 VINE Audio Processing Library Standard Edition
 
+Standard 버전에서는 AGC (Automaic Gain Control)기능을 제공합니다.
+
+AGC는 Mic와 화자 간 거리에 따라 자동으로 송신음량을 최적화하는 기능입니다.
+Audio PCM buffer interface가 제공되는 환경이면 본 프로젝트를 통해 AGC를 Intel x86/x64, ARM64, ARM32기반 등 다양한 플랫폼에 적용 가능합니다.
+
 
 # Library 적용 가이드
 
