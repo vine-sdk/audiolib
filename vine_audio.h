@@ -51,6 +51,7 @@ RETURN VALUE
 int VineProcessAGC (short* pcmInput, short* pcmOutput);
 
 
+<<<<<<< HEAD
 /*===========================================================================
 Function VineProcessAGCF
 
@@ -66,4 +67,6 @@ ARGUMENTS
 ===========================================================================*/
 int VineProcessAGCF (double* pcmInput, double* pcmOutput)
 	
+=======
+>>>>>>> parent of d6a6951 (Update vine_audio.h)
 #endif //____VINE_AUDIO____
