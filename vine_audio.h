@@ -51,4 +51,19 @@ RETURN VALUE
 int VineProcessAGC (short* pcmInput, short* pcmOutput);
 
 
+/*===========================================================================
+Function VineProcessAGCF
+
+DESCRIPTION
+	This function processes AGC.
+	
+ARGUMENTS	
+	pcmInput: A pointer to Tx PCM buffer from Vocoder, which is used as the input PCM signal.
+			[PCM format : signed double, 32 bits]
+			[Frame size : 160 bytes]
+			(16K samples/second * 32bits/sample * 10msec)
+	pcmOutput :A pointer to Tx PCM buffer will be filled with processed data. 
+===========================================================================*/
+int VineProcessAGCF (double* pcmInput, double* pcmOutput)
+	
 #endif //____VINE_AUDIO____
