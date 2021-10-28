@@ -40,8 +40,8 @@ DESCRIPTION
 ARGUMENTS	
 	pcmInput: A pointer to Tx PCM buffer from Vocoder, which is used as the input PCM signal.
 			[PCM format : signed, 15 bits]
-			[Frame size : 160 bytes]
-			(16K samples/second * 16bits/sample * 10msec)
+			[Frame size : 320 bytes]
+			(16K samples/second * 16bits/sample * 20msec)
 	pcmOutput :A pointer to Tx PCM buffer will be filled with processed data. 
 
 RETURN VALUE
@@ -60,8 +60,8 @@ DESCRIPTION
 ARGUMENTS	
 	pcmInput: A pointer to Tx PCM buffer from Vocoder, which is used as the input PCM signal.
 			[PCM format : signed double, 32 bits]
-			[Frame size : 160 bytes]
-			(16K samples/second * 32bits/sample * 10msec)
+			[Frame size : 640 bytes]
+			(16K samples/second * 32bits/sample * 20msec)
 	pcmOutput :A pointer to Tx PCM buffer will be filled with processed data. 
 ===========================================================================*/
 int VineProcessAGCF (double* pcmInput, double* pcmOutput)
