@@ -51,12 +51,11 @@ RETURN VALUE
 int VineProcessAGC (short* pcmInput, short* pcmOutput);
 
 
-<<<<<<< HEAD
 /*===========================================================================
 Function VineProcessAGCF
 
 DESCRIPTION
-	This function processes AGC.
+	This function processes AGC. (float input)
 	
 ARGUMENTS	
 	pcmInput: A pointer to Tx PCM buffer from Vocoder, which is used as the input PCM signal.
@@ -65,8 +64,22 @@ ARGUMENTS
 			(16K samples/second * 32bits/sample * 20msec)
 	pcmOutput :A pointer to Tx PCM buffer will be filled with processed data. 
 ===========================================================================*/
-int VineProcessAGCF (double* pcmInput, double* pcmOutput)
+int VineProcessAGCF (float* pcmInput, float* pcmOutput);
+
+
+/*===========================================================================
+Function VineProcessAGCD
+
+DESCRIPTION
+	This function processes AGC. (double input)
 	
-=======
->>>>>>> parent of d6a6951 (Update vine_audio.h)
+ARGUMENTS	
+	pcmInput: A pointer to Tx PCM buffer from Vocoder, which is used as the input PCM signal.
+			[PCM format : signed double, 32 bits]
+			[Frame size : 640 bytes]
+			(16K samples/second * 32bits/sample * 20msec)
+	pcmOutput :A pointer to Tx PCM buffer will be filled with processed data. 
+===========================================================================*/
+int VineProcessAGCD (double* pcmInput, double* pcmOutput);
+
 #endif //____VINE_AUDIO____
