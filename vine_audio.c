@@ -16,7 +16,7 @@
 
 static int g_agcBst = PARAM_MIN_VAL; // agc boost parameter
 static int g_agcLmt = PARAM_MIN_VAL; // agc limit parameter
-
+static int g_activeStatus = 0;
 
 /*===========================================================================
 DESCRIPTION
@@ -34,9 +34,11 @@ int VineInitAGC ()
 
 	if (agcResult == vagc_Success) {
 		ret_val = 1;
+		g_activeStatus = 1;
 	}
 	else {
 		ret_val = 0;
+		g_activeStatus = 0;
 	}
 	
 	return ret_val;
@@ -57,7 +59,7 @@ int VineProcessAGC (short* pcmInput, short* pcmOutput)
 	int retval = 0;
 	vagc_ProcessResult agcResult;
 
-	if(is_valid == 1) {
+	if(g_activeStatus == 1) {
 		agcResult = vagcProcess(pcmInput, pcmOutput, g_agcBst, g_agcBst);
 
 		if (agcResult == vagc_Success) {
@@ -100,7 +102,7 @@ int VineProcessAGCF (float* pcmInput, float* pcmOutput)
 	}
 	
 
-	if(is_valid == 1) {
+	if(g_activeStatus == 1) {
 		agcResult = vagcProcess(bufIn, bufOut, g_agcBst, g_agcBst);
 
 		if (agcResult == vagc_Success) {
@@ -147,7 +149,7 @@ int VineProcessAGCD (double* pcmInput, double* pcmOutput)
 	}
 	
 
-	if(is_valid == 1) {
+	if(g_activeStatus == 1) {
 		agcResult = vagcProcess(bufIn, bufOut, g_agcBst, g_agcBst);
 
 		if (agcResult == vagc_Success) {
