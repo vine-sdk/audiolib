@@ -6,7 +6,7 @@ Audio PCM buffer interface가 제공되는 환경이면 본 프로젝트를 통�
 
 AGC는 Mic와 화자 간 거리에 따라 자동으로 송신음량을 최적화하는 기능입니다.
 
-[!AGC Example](./AGC_IN_OUT.png)
+![AGC_IN_OUT](https://user-images.githubusercontent.com/75764437/142515569-30c9f4c5-b1ca-4668-93c7-e43e07bab56c.png)
 
 마이크와 화자간의 거리가 멀어지면 음성신호의 크기가 줄어들어서 상대편에 작게 전달될 수가 있습니다.
 AGC 기술을 통해 자동으로 적절한 음량으로 gain을 증가또는 감소시켜 전달 가능합니다. 이는 반대의 상황(마이크와 화자의 거리가 가까워져서 소리가 커지는 경우)에도 마찬가지로 적용됩니다.
