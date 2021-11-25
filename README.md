@@ -38,6 +38,14 @@ AGC 는 초기화, 프로세싱 함수(8K, 16K)로 구성되어 있으며 별도
 <br/>
 <br/>
 
+
+## AGC 실행 예제 프로젝트
+
+아래 예제 프로젝트 페이지를 참조하시기 바랍니다.<br/>
+https://github.com/vine-sdk/examples
+<br/>
+<br/>
+
 ## API 호출 예제
 
 1. 오디오시스템의 PCM Interface 초기화 부분에서 AGC 초기화 함수 호출
