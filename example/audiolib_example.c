@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
-#include "VINE_TX.h"
+#include "vine_audio.h"
 
 #ifndef FRAME_SIZE
 #define FRAME_SIZE  160
@@ -68,8 +68,8 @@ int main(int argc, char *argv[]) {
     printf("VINE audiolib Tx Test\n");
 
     if (argc < 2) {
-        printf("Usage: (Windows) > audiolib_test [input pcm file] \n");
-        printf("Usage: (bash) $ ./audiolib_test [input pcm file] \n");
+        printf("Usage: (Windows shell) > audiolib_test [input pcm file]\n");
+        printf("   or  (bash)          $ ./audiolib_test [input pcm file]\n");
         return -1;
     }
     char *strInFile = argv[1];

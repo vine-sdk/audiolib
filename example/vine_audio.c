@@ -14,8 +14,8 @@
 #define AGC_PARAM_MAX_VAL 32767
 #define FIXED_POINT_FRACTIONAL_BITS 5   // Fixed-point Format: 11.5 (16-bit)
 
-static int g_agcBst = AGC_PARAM_MIN_VAL; // agc boost parameter
-static int g_agcLmt = AGC_PARAM_MIN_VAL; // agc limit parameter
+static int g_agcBst = 100; // agc boost parameter
+static int g_agcLmt = 100; // agc limit parameter
 static int g_activeStatus = 0;
 
 /*===========================================================================
@@ -58,8 +58,8 @@ int VineProcessAGC (short* pcmInput, short* pcmOutput)
 	int i;
 	int retval = 0;
 	vagc_ProcessResult agcResult;
-
-	if(g_activeStatus == 1) {
+	
+	if (g_activeStatus == 1) {
 		agcResult = vagcProcess(pcmInput, pcmOutput, g_agcBst, g_agcBst);
 
 		if (agcResult == vagc_Success) {
