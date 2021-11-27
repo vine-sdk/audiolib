@@ -31,8 +31,10 @@ DESCRIPTION
 ARGUMENTS
 	AGCBoost : Tunable target gain. [1 ~ 32767]
 	AGCLimit : Limiter level setting value. [1 ~ 32767]
+	sampleRate : Sampling Rate [8000, 16000]
+	frameSizeInMs : PCM buffer frame size in ms [10, 20]
 ===========================================================================*/
-vagc_ProcessResult vagcInitialize(int AGCBoost, int AGCLimit);
+vagc_ProcessResult vagcInitialize(int AGCBoost, int AGCLimit, int sampleRate, int frameSizeInMs);
 
 
 /*===========================================================================
