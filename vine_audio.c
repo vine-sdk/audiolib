@@ -10,6 +10,8 @@
 // common default constatns
 #define FRAMESIZE_NB 160
 #define FRAMESIZE_WB 320
+#define DEFAULT_SAMPLE_RATE 8000
+#define DEFAULT_FRAMESIZE_IN_MS	20
 #define AGC_PARAM_MIN_VAL 1
 #define AGC_PARAM_MAX_VAL 32767
 #define FIXED_POINT_FRACTIONAL_BITS 5   // Fixed-point Format: 11.5 (16-bit)
@@ -29,8 +31,11 @@ int VineInitAGC ()
 {
 	vagc_ProcessResult agcResult;
 	int ret_val = 0;
- 
-	agcResult = vagcInitialize(g_agcBst, g_agcLmt);
+	int sampleRate = DEFAULT_SAMPLE_RATE;
+	int frameSizeInMs = DEFAULT_FRAMESIZE_IN_MS;
+	
+
+	agcResult = vagcInitialize(g_agcBst, g_agcLmt, sampleRate, frameSizeInMs);
 
 	if (agcResult == vagc_Success) {
 		ret_val = 1;
