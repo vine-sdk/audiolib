@@ -71,11 +71,12 @@ int VineProcessAGC (short* pcmInput, short* pcmOutput)
 			retval = 1;
 		}
 		else {
+			for(i=0;i<FRAMESIZE_WB;i++) { pcmOutput[i] = pcmInput[i]; }
 			retval = 0;
 		}
 	}
 	else {
-		for(i=0;i<FRAMESIZE_NB;i++) { pcmOutput[i] = pcmInput[i]; }
+		for(i=0;i<FRAMESIZE_WB;i++) { pcmOutput[i] = pcmInput[i]; }
 		retval = 1;
 	}
 			
@@ -114,6 +115,7 @@ int VineProcessAGCF (float* pcmInput, float* pcmOutput)
 			retval = 1;
 		}
 		else {
+			for(i=0;i<FRAMESIZE_WB;i++) { pcmOutput[i] = pcmInput[i]; }
 			retval = 0;
 		}
 		
@@ -123,7 +125,7 @@ int VineProcessAGCF (float* pcmInput, float* pcmOutput)
 		}
 	}
 	else {
-		for(i=0;i<FRAMESIZE_NB;i++) { pcmOutput[i] = pcmInput[i]; }
+		for(i=0;i<FRAMESIZE_WB;i++) { pcmOutput[i] = pcmInput[i]; }
 		retval = 1;
 	}
 			
@@ -161,6 +163,7 @@ int VineProcessAGCD (double* pcmInput, double* pcmOutput)
 			retval = 1;
 		}
 		else {
+			for(i=0;i<FRAMESIZE_WB;i++) { pcmOutput[i] = pcmInput[i]; }
 			retval = 0;
 		}
 		
@@ -170,7 +173,7 @@ int VineProcessAGCD (double* pcmInput, double* pcmOutput)
 		}
 	}
 	else {
-		for(i=0;i<FRAMESIZE_NB;i++) { pcmOutput[i] = pcmInput[i]; }
+		for(i=0;i<FRAMESIZE_WB;i++) { pcmOutput[i] = pcmInput[i]; }
 		retval = 1;
 	}
 			
