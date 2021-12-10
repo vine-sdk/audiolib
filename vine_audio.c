@@ -10,6 +10,7 @@
 // common default constatns
 #define FRAMESIZE_NB 160
 #define FRAMESIZE_WB 320
+#define MAX_FRAMESIZE FRAMESIZE_WB
 #define DEFAULT_SAMPLE_RATE 8000
 #define DEFAULT_FRAMESIZE_IN_MS	20
 #define AGC_PARAM_MIN_VAL 1
@@ -19,6 +20,7 @@
 static int g_agcBst = AGC_PARAM_MIN_VAL; // agc boost parameter
 static int g_agcLmt = AGC_PARAM_MIN_VAL; // agc limit parameter
 static int g_activeStatus = 0;
+static int g_frameSize = FRAMESIZE_WB;
 
 /*===========================================================================
 DESCRIPTION
@@ -71,12 +73,12 @@ int VineProcessAGC (short* pcmInput, short* pcmOutput)
 			retval = 1;
 		}
 		else {
-			for(i=0;i<FRAMESIZE_WB;i++) { pcmOutput[i] = pcmInput[i]; }
+			for(i=0;i<g_frameSize;i++) { pcmOutput[i] = pcmInput[i]; }
 			retval = 0;
 		}
 	}
 	else {
-		for(i=0;i<FRAMESIZE_WB;i++) { pcmOutput[i] = pcmInput[i]; }
+		for(i=0;i<g_frameSize;i++) { pcmOutput[i] = pcmInput[i]; }
 		retval = 1;
 	}
 			
@@ -97,13 +99,13 @@ int VineProcessAGCF (float* pcmInput, float* pcmOutput)
 	int i;
 	int retval = 0;
 	vagc_ProcessResult agcResult;
-	short bufIn[FRAMESIZE_WB];
-	short bufOut[FRAMESIZE_WB];
+	short bufIn[MAX_FRAMESIZE];
+	short bufOut[MAX_FRAMESIZE];
 	
 	// 1. Calculate x = floating_input * 2^(fractional_bits)
   	// 2. Round x to the nearest whole number (e.g. round(x))
   	// 3. Store the rounded x in an integer container
-	for(i=0; i < FRAMESIZE_WB; i++) {
+	for(i=0; i < g_frameSize; i++) {
 		bufIn[i] = (short)(round(pcmInput[i] * (1 << FIXED_POINT_FRACTIONAL_BITS)));	
 	}
 	
@@ -115,17 +117,17 @@ int VineProcessAGCF (float* pcmInput, float* pcmOutput)
 			retval = 1;
 		}
 		else {
-			for(i=0;i<FRAMESIZE_WB;i++) { pcmOutput[i] = pcmInput[i]; }
+			for(i=0;i<g_frameSize;i++) { pcmOutput[i] = pcmInput[i]; }
 			retval = 0;
 		}
 		
 		// Convert fixedSample (11.5) to doubleSample
-		for(i=0; i < FRAMESIZE_WB; i++) {
+		for(i=0; i < g_frameSize; i++) {
 			pcmOutput[i] = ((double)bufOut[i] / (double)(1 << FIXED_POINT_FRACTIONAL_BITS));
 		}
 	}
 	else {
-		for(i=0;i<FRAMESIZE_WB;i++) { pcmOutput[i] = pcmInput[i]; }
+		for(i=0;i<g_frameSize;i++) { pcmOutput[i] = pcmInput[i]; }
 		retval = 1;
 	}
 			
@@ -145,13 +147,13 @@ int VineProcessAGCD (double* pcmInput, double* pcmOutput)
 	int i;
 	int retval = 0;
 	vagc_ProcessResult agcResult;
-	short bufIn[FRAMESIZE_WB];
-	short bufOut[FRAMESIZE_WB];
+	short bufIn[MAX_FRAMESIZE];
+	short bufOut[MAX_FRAMESIZE];
 	
 	// 1. Calculate x = floating_input * 2^(fractional_bits)
   	// 2. Round x to the nearest whole number (e.g. round(x))
   	// 3. Store the rounded x in an integer container
-	for(i=0; i < FRAMESIZE_WB; i++) {
+	for(i=0; i < g_frameSize; i++) {
 		bufIn[i] = (short)(round(pcmInput[i] * (1 << FIXED_POINT_FRACTIONAL_BITS)));	
 	}
 	
@@ -163,17 +165,17 @@ int VineProcessAGCD (double* pcmInput, double* pcmOutput)
 			retval = 1;
 		}
 		else {
-			for(i=0;i<FRAMESIZE_WB;i++) { pcmOutput[i] = pcmInput[i]; }
+			for(i=0;i<g_frameSize;i++) { pcmOutput[i] = pcmInput[i]; }
 			retval = 0;
 		}
 		
 		// Convert fixedSample (11.5) to doubleSample
-		for(i=0; i < FRAMESIZE_WB; i++) {
+		for(i=0; i < g_frameSize; i++) {
 			pcmOutput[i] = ((double)bufOut[i] / (double)(1 << FIXED_POINT_FRACTIONAL_BITS));
 		}
 	}
 	else {
-		for(i=0;i<FRAMESIZE_WB;i++) { pcmOutput[i] = pcmInput[i]; }
+		for(i=0;i<g_frameSize;i++) { pcmOutput[i] = pcmInput[i]; }
 		retval = 1;
 	}
 			
